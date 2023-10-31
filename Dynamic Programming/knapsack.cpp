@@ -2,6 +2,11 @@
 
 using namespace std;
 
+int max(int a, int b)
+{
+    return (a > b) ? a : b;
+}
+
 void knap(int n, int c, int w[], int v[])
 {
     int dp[n + 1][c + 1];
@@ -21,6 +26,13 @@ void knap(int n, int c, int w[], int v[])
             else
 
                 dp[i][j] = dp[i - 1][j];
+        }
+    }
+
+    for (int i = 0; i <= n; i++)
+    {
+        for (int j = 0; j <= c; j++)
+        {
 
             cout << dp[i][j] << " ";
         }
@@ -35,16 +47,25 @@ int main()
     cout << "Enter item number :";
     cin >> n;
 
+    printf("Enter maximum capacity :");
+    cin >> c;
+
     int w[n], v[n];
-    cout << "Enter weight and values :";
+
+    cout << "Enter weights :";
 
     for (int i = 0; i < n; i++)
     {
         cin >> w[i];
+    }
+
+    cout << "Enter values :";
+
+    for (int i = 0; i < n; i++)
+    {
         cin >> v[i];
     }
-    printf("Enter maximum capacity :");
-    cin >> c;
+
     knap(n, c, w, v);
     return 0;
 }
